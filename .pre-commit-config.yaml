@@ -1,0 +1,7 @@
+# Pre-commit
+# @see http://pre-commit.com/
+- repo: git://github.com/pre-commit/pre-commit-hooks
+  sha: master
+  hooks:
+    - id: check-yaml
+      files: \.(yaml|yml)$
