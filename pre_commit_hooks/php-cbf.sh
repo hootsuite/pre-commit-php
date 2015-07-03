@@ -44,9 +44,7 @@ fi
 phpcbf_files_to_check="${@:2}"
 phpcbf_args=$1
 # Without this escape field, the parameters would break if there was a comma in it
-escape_comma="/,"
-phpcbf_args_parsed="${phpcbf_args:escape_comma:,}"
-phpcbf_command="$phpcbf_command $phpcbf_args_parsed $phpcbf_files_to_check"
+phpcbf_command="$phpcbf_command $phpcbf_args $phpcbf_files_to_check"
 
 echo "Running command $phpcbf_command"
 command_result=`eval $phpcbf_command`
