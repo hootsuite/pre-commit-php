@@ -9,6 +9,9 @@ Version names based on [Top 100 Songs of 1984 - Billboard Year End Charts](http:
 ### Fixed
 
 * Comma issues with command line arguments for PHP CS. Thanks to @ixisandyr and @jaychakra
+
+### Added
+
 * PHP Codesniffer and Beautifer Combo by @jaychakra
 
 ## 1.0.0 - 2015-03-03 - `Footloose`
