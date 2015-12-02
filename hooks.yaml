@@ -26,3 +26,10 @@
   entry: pre_commit_hooks/php-cs.sh
   language: script
   files: \.php$
+
+- id: php-cbf
+  name: PHP Codesniffer (Code Beutifier and Formatter)
+  description: Run php codesniffer against all staged files.
+  entry: pre_commit_hooks/php-cbf.sh
+  language: script
+  files: \.php$

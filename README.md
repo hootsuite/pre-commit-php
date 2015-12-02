@@ -7,12 +7,15 @@ Pre-commit scripts appropiate for *any* PHP project. These hooks are made as cus
 Just add to your `.pre-commit-config.yaml` file with the following
 
 ```yaml
-- repo: git@github.com:hootsuite/pre-commit-php.git
+- repo: git@github.com/hootsuite/pre-commit-php.git
   sha: 1.0.0
   hooks:
   - id: php-lint
   - id: php-unit
   - id: php-cs
+    files: \.(php)$
+    args: [--standard=PSR1 -p]
+  - id: php-cbf	
     files: \.(php)$
     args: [--standard=PSR1 -p]
 ```
@@ -22,7 +25,8 @@ Just add to your `.pre-commit-config.yaml` file with the following
 ## php-lint
 
 ```yaml
-- repo: git@github.com:hootsuite/pre-commit-php.git
+<<<<<<< HEAD
+- repo: git@github.com/hootsuite/pre-commit-php.git
   sha: 1.0.0
   hooks:
   - id: php-lint
@@ -33,7 +37,7 @@ A bash script that runs `php -l` against stage files that are php. Assumes `php`
 ## php-lint-all
 
 ```yaml
-- repo: git@github.com:hootsuite/pre-commit-php.git
+- repo: git@github.com/hootsuite/pre-commit-php.git
   sha: 1.0.0
   hooks:
   - id: php-lint-all
@@ -45,7 +49,7 @@ A systems hook that just runs `php -l` against stage files that have the `.php` 
 
 
 ```yaml
-- repo: git@github.com:hootsuite/pre-commit-php.git
+- repo: git@github.com/hootsuite/pre-commit-php.git
   sha: 1.0.0
   hooks:
   - id: php-unit
@@ -60,7 +64,7 @@ Note in its current state, it will run the whole PHPUnit test as along as `.php`
 ## php-cs
 
 ```yaml
-- repo: git@github.com:hootsuite/pre-commit-php.git
+- repo: git@github.com/hootsuite/pre-commit-php.git
   sha: 1.0.0
   hooks:
   - id: php-cs
@@ -76,8 +80,26 @@ The `args` property in your hook declaration can be used for pass any valid PHP 
 
 If you have multiple standards or a comma in your `args` property, escape the comma character like so
 
+## php-cbf
+
 ```yaml
-- repo: git@github.com:hootsuite/pre-commit-php.git
+- repo: git@github.com/hootsuite/pre-commit-php.git
+  sha: 1.0.0
+  hooks:
+  - id: php-cs
+    files: \.(php)$
+    args: [--standard=PSR1 -p]
+```
+Similar pattern as the php-cs hook. A bash script that will run the appropriate [PHP Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer) executable and will try to fix errors if it can using phpcbf.
+
+It will assume that there is a valid PHP Code Beautifier and Fixer executable at these locations, `vendor/bin/phpcbf`, `phpcbf` or `php phpcbf.phar` (in that exact order).
+
+The `args` property in your hook declaration can be used for pass any valid PHP Code Sniffer arguments. In the example above, it will run PHP Code Sniffer against only the staged php files with the `PSR-1` and progress enabled.
+
+If you have multiple standards or a comma in your `args` property, escape the comma character like so
+
+```yaml
+- repo: git@github.com/hootsuite/pre-commit-php.git
   sha: 1.0.0
   hooks:
   - id: php-cs
@@ -85,4 +107,4 @@ If you have multiple standards or a comma in your `args` property, escape the co
     args: [--standard=PSR1/,path/to/ruleset.xml -p]
 ```
 
-To install PHP Codesniffer, follow the [recommended steps here](https://github.com/squizlabs/PHP_CodeSniffer#installation).
+To install PHP Codesniffer (phpcs & phpcbf), follow the [recommended steps here](https://github.com/squizlabs/PHP_CodeSniffer#installation).
