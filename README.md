@@ -104,7 +104,7 @@ If you have multiple standards or a comma in your `args` property, escape the co
   hooks:
   - id: php-cs
     files: \.(php)$
-    args: [--standard=PSR1/,path/to/ruleset.xml -p]
+    args: ["--standard=PSR1/,path/to/ruleset.xml", "-p"]
 ```
 
 To install PHP Codesniffer (phpcs & phpcbf), follow the [recommended steps here](https://github.com/squizlabs/PHP_CodeSniffer#installation).

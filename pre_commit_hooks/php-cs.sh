@@ -14,9 +14,9 @@
 # - None
 
 # Echo Colors
-msg_color_magenta='\e[1;35m'
-msg_color_yellow='\e[0;33m'
-msg_color_none='\e[0m' # No Color
+msg_color_magenta='\033[1;35m'
+msg_color_yellow='\033[0;33m'
+msg_color_none='\033[0m' # No Color
 
 # Loop through the list of paths to run php codesniffer against
 echo -en "${msg_color_yellow}Begin PHP Codesniffer ...${msg_color_none} \n"
@@ -43,10 +43,7 @@ fi
 
 phpcs_files_to_check="${@:2}"
 phpcs_args=$1
-# Without this escape field, the parameters would break if there was a comma in it
-escape_comma="/,"
-phpcs_args_parsed="${phpcs_args:escape_comma:,}"
-phpcs_command="$phpcs_command $phpcs_args_parsed $phpcs_files_to_check"
+phpcs_command="$phpcs_command $phpcs_args $phpcs_files_to_check"
 
 echo "Running command $phpcs_command"
 command_result=`eval $phpcs_command`
