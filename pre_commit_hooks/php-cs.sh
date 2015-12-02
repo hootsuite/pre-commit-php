@@ -46,7 +46,7 @@ phpcs_args=$1
 # Without this escape field, the parameters would break if there was a comma in it
 escape_comma="/,"
 phpcs_args_parsed="${phpcs_args:escape_comma:,}"
-phpcs_command="$phpcs_command $phpcs_args $phpcs_files_to_check"
+phpcs_command="$phpcs_command $phpcs_args_parsed $phpcs_files_to_check"
 
 echo "Running command $phpcs_command"
 command_result=`eval $phpcs_command`
