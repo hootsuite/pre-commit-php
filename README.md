@@ -15,6 +15,9 @@ Just add to your `.pre-commit-config.yaml` file with the following
   - id: php-cs
     files: \.(php)$
     args: [--standard=PSR1 -p]
+  - id: php-cbf	
+    files: \.(php)$
+    args: [--standard=PSR1 -p]
 ```
 
 # Supported Hooks
@@ -22,6 +25,7 @@ Just add to your `.pre-commit-config.yaml` file with the following
 ## php-lint
 
 ```yaml
+<<<<<<< HEAD
 - repo: git@github.com:hootsuite/pre-commit-php.git
   sha: 1.0.0
   hooks:
@@ -76,6 +80,24 @@ The `args` property in your hook declaration can be used for pass any valid PHP 
 
 If you have multiple standards or a comma in your `args` property, escape the comma character like so
 
+## php-cbf
+
+```yaml
+- repo: git@github.com:hootsuite/pre-commit-php.git
+  sha: 1.0.0
+  hooks:
+  - id: php-cs
+    files: \.(php)$
+    args: [--standard=PSR1 -p]
+```
+Similar pattern as the php-cs hook. A bash script that will run the appropriate [PHP Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer) executable and will try to fix errors if it can using phpcbf.
+
+It will assume that there is a valid PHP Code Beautifier and Fixer executable at these locations, `vendor/bin/phpcbf`, `phpcbf` or `php phpcbf.phar` (in that exact order).
+
+The `args` property in your hook declaration can be used for pass any valid PHP Code Sniffer arguments. In the example above, it will run PHP Code Sniffer against only the staged php files with the `PSR-1` and progress enabled.
+
+If you have multiple standards or a comma in your `args` property, escape the comma character like so
+
 ```yaml
 - repo: git@github.com:hootsuite/pre-commit-php.git
   sha: 1.0.0
@@ -85,4 +107,4 @@ If you have multiple standards or a comma in your `args` property, escape the co
     args: [--standard=PSR1/,path/to/ruleset.xml -p]
 ```
 
-To install PHP Codesniffer, follow the [recommended steps here](https://github.com/squizlabs/PHP_CodeSniffer#installation).
+To install PHP Codesniffer (phpcs & phpcbf), follow the [recommended steps here](https://github.com/squizlabs/PHP_CodeSniffer#installation).
