@@ -33,3 +33,10 @@
   entry: pre_commit_hooks/php-cbf.sh
   language: script
   files: \.php$
+
+- id: php-cs-fixer
+  name: PHP Coding Standards Fixer
+  description: Run php coding standards fixer against all staged files.
+  entry: pre_commit_hooks/php-cs-fixer.sh
+  language: script
+  files: \.php$
