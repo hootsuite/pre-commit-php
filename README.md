@@ -122,3 +122,15 @@ Similar pattern as the php-cs hook. A bash script that will run the appropriate 
 
 The tool will fail a build when it has made changes to the staged files. This allows a developer to do a `git diff` and examine the changes that it has made. Remember that you may omit this if needed with a `SKIP=php-cs-fixer git commit`.
 
+## php-md
+```yaml
+- repo: git@github.com:hootsuite/pre-commit-php.git
+  sha: 1.1.0
+  hooks:
+  - id: php-md
+    files: \.(php)$
+    args: ["codesize,controversial,design,naming,unusedcode"]
+```
+A bash script that will run the appropriate [PHP Mess Detector](http://phpmd.org/) executable and report issues as configured.
+
+The tool will fail a build when it has found issues that violate the configured code rules. Please note that the code rule list must be the first argument in the `args` list.
