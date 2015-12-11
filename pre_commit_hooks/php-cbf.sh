@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Bash PHP Code Beautifier and Fixer Hook
 # This script fails if the PHP Code Beautifier and Fixer output has the word "ERROR" in it.
