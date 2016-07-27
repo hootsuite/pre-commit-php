@@ -25,7 +25,6 @@ Just add to your `.pre-commit-config.yaml` file with the following
 ## php-lint
 
 ```yaml
-<<<<<<< HEAD
 - repo: git@github.com:hootsuite/pre-commit-php.git
   sha: 1.1.0
   hooks:
@@ -47,7 +46,6 @@ A systems hook that just runs `php -l` against stage files that have the `.php` 
 
 ## php-unit
 
-
 ```yaml
 - repo: git@github.com:hootsuite/pre-commit-php.git
   sha: 1.1.0
@@ -58,6 +56,8 @@ A systems hook that just runs `php -l` against stage files that have the `.php` 
 A bash script that will run the appropriate phpunit executable. It will assume
   - Find the executable to run at either `vendor/bin/phpunit`, `phpunit` or `php phpunit.phar` (in that exact order).
   - There is already a `phpunit.xml` in the root of the repo
+
+*Optional:* You can provide a custom command as an argument, this will overwrite the default behavior and enables you to further customize your php-unit setup. e.g.: `args: ["composer run php-unit"]`
 
 Note in its current state, it will run the whole PHPUnit test as along as `.php` file was committed.
 
