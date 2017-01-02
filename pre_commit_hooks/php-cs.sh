@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Bash PHP Codesniffer Hook
 # This script fails if the PHP Codesniffer output has the word "ERROR" in it.
