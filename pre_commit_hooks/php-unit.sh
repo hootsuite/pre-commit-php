@@ -19,6 +19,17 @@ msg_color_none='\e[0m' # No Color
 # Loop through the list of paths to run php lint against
 echo -en "${msg_color_yellow}Begin PHP Unit Task Runner ...${msg_color_none} \n"
 
+args=""
+files=()
+for arg in ${*}
+do
+    if [ -f $arg ]; then
+        files+=("$arg")
+    else
+        args+=" $arg"
+    fi
+done;
+
 phpunit_local_exec="phpunit.phar"
 phpunit_command="php $phpunit_local_exec"
 
@@ -40,8 +51,8 @@ else
     fi
 fi
 
-echo "Running command $phpunit_command"
-command_result=`eval $phpunit_command`
+echo "Running command $phpunit_command ${args}"
+command_result=`eval $phpunit_command ${args}`
 if [[ $command_result =~ FAILURES ]]
 then
     echo "Failures detected in unit tests..."
