@@ -112,13 +112,15 @@ To install PHP Codesniffer (phpcs & phpcbf), follow the [recommended steps here]
 ## php-cs-fixer
 ```yaml
 - repo: git@github.com:hootsuite/pre-commit-php.git
-  sha: 1.1.0
+  sha: 1.2.0
   hooks:
   - id: php-cs-fixer
     files: \.(php)$
     args: [--level=PSR2]
 ```
 Similar pattern as the php-cs hook. A bash script that will run the appropriate [PHP Coding Standards Fixer](http://cs.sensiolabs.org/) executable and to fix errors according to the configuration. It accepts all of the args from the `php-cs-fixer` command, in particular the `--level`, `--config`, and `--config-file` options.
+
+If you use `php-cs-fixer~v2` the options `--level` and `--config-file` have been removed.
 
 The tool will fail a build when it has made changes to the staged files. This allows a developer to do a `git diff` and examine the changes that it has made. Remember that you may omit this if needed with a `SKIP=php-cs-fixer git commit`.
 
