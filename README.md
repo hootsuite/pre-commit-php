@@ -1,6 +1,6 @@
-# Hootsuite - PHP Pre-commit Hooks
+# Digital Pulp - PHP Pre-commit Hooks
 
-Pre-commit scripts appropiate for *any* PHP project. These hooks are made as custom plugins under the [pre-commit](http://pre-commit.com/#new-hooks) git hook framework.
+Pre-commit scripts appropriate for *any* PHP project. These hooks are made as custom plugins under the [pre-commit](http://pre-commit.com/#new-hooks) git hook framework.
 
 # Setup
 
