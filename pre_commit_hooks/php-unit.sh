@@ -17,7 +17,7 @@ msg_color_yellow='\e[0;33m'
 msg_color_none='\e[0m' # No Color
 
 # Loop through the list of paths to run php lint against
-echo "${msg_color_yellow}Begin PHP Unit Task Runner ...${msg_color_none}"
+echo -e "${msg_color_yellow}Begin PHP Unit Task Runner ...${msg_color_none} \n"
 
 phpunit_local_exec="phpunit.phar"
 phpunit_command="php $phpunit_local_exec"

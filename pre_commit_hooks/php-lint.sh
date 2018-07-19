@@ -51,7 +51,7 @@ while getopts ":s:" optname
   done
 
 # Loop through the list of paths to run php lint against
-echo "${msg_color_yellow}Begin PHP Linter ...${msg_color_none}"
+echo -e "${msg_color_yellow}Begin PHP Linter ...${msg_color_none} \n"
 
 parse_error_count=0
 for path in ${*:$arg_lookup_start}
@@ -69,7 +69,7 @@ do
 done;
 
 if [ "$php_errors_found" = true ]; then
-    echo "${msg_color_magenta}$parse_error_count${msg_color_none} ${msg_color_yellow}PHP Parse error(s) were found!${msg_color_none}"
+    echo -e "${msg_color_magenta}$parse_error_count${msg_color_none} ${msg_color_yellow}PHP Parse error(s) were found!${msg_color_none} \n"
     exit 1
 fi
 

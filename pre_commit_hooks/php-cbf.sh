@@ -19,7 +19,7 @@ msg_color_yellow='\e[0;33m'
 msg_color_none='\e[0m' # No Color
 
 # Loop through the list of paths to run PHP Code Beautifier and Fixer against
-echo "${msg_color_yellow}Begin PHP Code Beautifier and Fixer ...${msg_color_none}"
+echo -e "${msg_color_yellow}Begin PHP Code Beautifier and Fixer ...${msg_color_none} \n"
 phpcbf_local_exec="phpcbf.phar"
 phpcbf_command="php $phpcbf_local_exec"
 
@@ -50,7 +50,7 @@ echo "Running command $phpcbf_command"
 command_result=`eval $phpcbf_command`
 if [[ $command_result =~ ERROR ]]
 then
-    echo "${msg_color_magenta}Errors detected by PHP Code Beautifier and Fixer ... ${msg_color_none}"
+    echo -e "${msg_color_magenta}Errors detected by PHP Code Beautifier and Fixer ... ${msg_color_none} \n"
     echo "$command_result"
     exit 1
 fi
