@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env sh
+
 ################################################################################
 #
 # Bash PHP Coding Standards Fixer
@@ -47,7 +48,7 @@ do
 done;
 
 # Run the command on each file
-echo -e "${txtgrn}  $exec_command fix${args}${txtrst}"
+echo "${txtgrn}  $exec_command fix${args}${txtrst}"
 php_errors_found=false
 error_message=""
 for path in "${files[@]}"
@@ -62,9 +63,9 @@ done;
 # There is currently debate about exit codes in php-cs-fixer
 # https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/1211
 if [ "$php_errors_found" = true ]; then
-    echo -en "\n${txtylw}${title} updated the following files:${txtrst}\n"
-    echo -en "${error_message}"
-    echo -en "\n${bldred}Please review and commit.${txtrst}\n"
+    echo "${txtylw}${title} updated the following files:${txtrst}"
+    echo "${error_message}"
+    echo "${bldred}Please review and commit.${txtrst}"
     exit 1
 fi
 
