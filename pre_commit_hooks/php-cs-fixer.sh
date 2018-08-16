@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env sh
+
 ################################################################################
 #
 # Bash PHP Coding Standards Fixer
@@ -62,9 +63,9 @@ done;
 # There is currently debate about exit codes in php-cs-fixer
 # https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/1211
 if [ "$php_errors_found" = true ]; then
-    echo -en "\n${txtylw}${title} updated the following files:${txtrst}\n"
-    echo -en "${error_message}"
-    echo -en "\n${bldred}Please review and commit.${txtrst}\n"
+    echo -e "\n${txtylw}${title} updated the following files:${txtrst}\n"
+    echo -e "${error_message}"
+    echo -e "\n${bldred}Please review and commit.${txtrst}\n"
     exit 1
 fi
 

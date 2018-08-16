@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 # Bash PHP Codesniffer Hook
 # This script fails if the PHP Codesniffer output has the word "ERROR" in it.
@@ -19,7 +19,7 @@ msg_color_yellow='\033[0;33m'
 msg_color_none='\033[0m' # No Color
 
 # Loop through the list of paths to run php codesniffer against
-echo -en "${msg_color_yellow}Begin PHP Codesniffer ...${msg_color_none} \n"
+echo -e "${msg_color_yellow}Begin PHP Codesniffer ...${msg_color_none} \n"
 phpcs_local_exec="phpcs.phar"
 phpcs_command="php $phpcs_local_exec"
 
@@ -49,7 +49,7 @@ echo "Running command $phpcs_command"
 command_result=`eval $phpcs_command`
 if [[ $command_result =~ ERROR ]]
 then
-    echo -en "${msg_color_magenta}Errors detected by PHP CodeSniffer ... ${msg_color_none} \n"
+    echo -e "${msg_color_magenta}Errors detected by PHP CodeSniffer ... ${msg_color_none} \n"
     echo "$command_result"
     exit 1
 fi
