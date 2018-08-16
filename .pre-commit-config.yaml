@@ -1,7 +1,7 @@
 # Pre-commit
 # @see http://pre-commit.com/
 repos:
-- repo: git://github.com/pre-commit/pre-commit-hooks
+- repo: https://github.com/hlgrrnhrdt/pre-commit-php.git
   rev: v1.3.0
   hooks:
     - id: check-yaml
