@@ -40,3 +40,10 @@
   entry: pre_commit_hooks/php-cs-fixer.sh
   language: script
   files: \.php$
+
+- id: php-md
+  name: PHP Mess Detector
+  description: Examine code for potential problems.
+  entry: pre_commit_hooks/php-md.sh
+  language: script
+  files: \.php$
