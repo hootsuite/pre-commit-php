@@ -67,9 +67,9 @@ do
 done;
 
 if [ "$php_errors_found" = true ]; then
-    echo -en "\n${txtylw}${title} found issues in the following files:${txtrst}\n\n"
-    echo -en "${error_message}"
-    echo -en "${bldred}Please review and commit.${txtrst}\n"
+    echo -e "\n${txtylw}${title} found issues in the following files:${txtrst}\n\n"
+    echo -e "${error_message}"
+    echo -e "${bldred}Please review and commit.${txtrst}\n"
     exit 1
 fi
 
