@@ -133,3 +133,16 @@ The tool will fail a build when it has made changes to the staged files. This al
 A bash script that will run the appropriate [PHP Mess Detector](http://phpmd.org/) executable and report issues as configured.
 
 The tool will fail a build when it has found issues that violate the configured code rules. Please note that the code rule list must be the first argument in the `args` list.
+
+## php-cpd
+```yaml
+- repo: https://github.com/hlgrrnhrdt/pre-commit-php.git
+  sha: master
+  hooks:
+  - id: php-cpd
+    files: \.(php)$
+    args: ["--min-tokens=10"]
+```
+A bash script that will run the appropriate [PHP Copy Paste Detector](https://github.com/sebastianbergmann/phpcpd) executable and report on duplicate code.
+
+The tool will fail a build when it has found issues that violate the configured code rules. This will accept all arguments, in particular you'll want to tune for `----min-lines=`, `--min-tokens=`, and `--fuzzy`.
