@@ -15,7 +15,7 @@ if [ -f "$vendor_command" ]; then
 elif hash $global_command 2>/dev/null; then
     exec_command=$global_command
 elif [ -f "$local_command" ]; then
-    phpcsfixer_command=$prefixed_local_command
+    exec_command=$prefixed_local_command
 else
     echo -e "${bldred}No valid ${title} found!${txtrst}"
     echo "Please have one available as one of the following:"
