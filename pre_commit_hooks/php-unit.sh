@@ -11,40 +11,28 @@
 # Arguments
 # - None
 
-# Echo Colors
-msg_color_magenta='\e[1;35m'
-msg_color_yellow='\e[0;33m'
-msg_color_none='\e[0m' # No Color
+# Plugin title
+title="PHP Unit Task Runner"
 
-# Loop through the list of paths to run php lint against
-echo -en "${msg_color_yellow}Begin PHP Unit Task Runner ...${msg_color_none} \n"
+# Possible command names of this tool
+local_command="phpunit.phar"
+vendor_command="vendor/bin/phpunit"
+global_command="phpunit"
 
-phpunit_local_exec="phpunit.phar"
-phpunit_command="php $phpunit_local_exec"
+# Print a welcome and locate the exec for this tool
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $DIR/helpers/colors.sh
+source $DIR/helpers/formatters.sh
+source $DIR/helpers/welcome.sh
+source $DIR/helpers/locate.sh
 
-# Check vendor/bin/phpunit
-phpunit_vendor_command="vendor/bin/phpunit"
-phpunit_global_command="phpunit"
-if [ -f "$phpunit_vendor_command" ]; then
-	phpunit_command=$phpunit_vendor_command
-else
-    if hash phpunit 2>/dev/null; then
-        phpunit_command=$phpunit_global_command
-    else
-        if [ -f "$phpunit_local_exec" ]; then
-            phpunit_command=$phpunit_command
-        else
-            echo "No valid PHP Unit executable found! Please have one available as either $phpunit_vendor_command, $phpunit_global_command or $phpunit_local_exec"
-            exit 1
-        fi
-    fi
-fi
-
-echo "Running command $phpunit_command"
-command_result=`eval $phpunit_command`
+echo -e "${bldwht}Running command ${txtgrn} ${exec_command}"
+command_result=`eval $exec_command`
 if [[ $command_result =~ FAILURES ]]
 then
+    hr
     echo "Failures detected in unit tests..."
+    hr
     echo "$command_result"
     exit 1
 fi
